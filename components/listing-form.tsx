@@ -93,25 +93,37 @@ export default function ListingForm() {
         <p className="mt-2 text-xs text-slate-500">{description.length} characters</p>
       </div>
 
-      {/* Platform */}
+      {/* Platform Selector Cards */}
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-        <label className="mb-3 block text-sm font-medium text-white">Target Platform</label>
-        <Select value={platform} onValueChange={(v) => setPlatform(v as Platform)}>
-          <SelectTrigger className="border-white/10 bg-white/5 text-white">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent className="border-white/10 bg-slate-900 text-white">
-            {PLATFORM_OPTIONS.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value} className="focus:bg-white/10">
-                <div className="flex items-center gap-2">
-                  <span>{opt.emoji}</span>
-                  <span className="font-medium">{opt.label}</span>
-                  <span className="text-slate-400">— {opt.desc}</span>
+        <label className="mb-3 block text-sm font-semibold text-white">
+          Target Marketplace
+        </label>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {PLATFORM_OPTIONS.map((opt) => {
+            const isSelected = platform === opt.value;
+            return (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => setPlatform(opt.value)}
+                className={`relative flex flex-col items-start p-4 rounded-xl border text-left transition-all ${
+                  isSelected
+                    ? 'border-purple-500 bg-purple-500/20 ring-2 ring-purple-500/40 shadow-lg shadow-purple-950/50'
+                    : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
+                }`}
+              >
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-xl">{opt.emoji}</span>
+                  <span className="font-semibold text-white text-base">{opt.label}</span>
                 </div>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+                <span className="text-xs text-slate-300 leading-relaxed">{opt.desc}</span>
+                {isSelected && (
+                  <span className="absolute top-3 right-3 h-2 w-2 rounded-full bg-purple-400 ring-4 ring-purple-400/20" />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Error */}
