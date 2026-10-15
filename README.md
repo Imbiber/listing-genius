@@ -32,6 +32,14 @@ Existing AI copywriting tools have three major dealbreakers:
 
 ---
 
+## 🎥 Video Demo & Live Preview
+
+[![Watch the Demo](https://raw.githubusercontent.com/Imbiber/listing-genius/main/public/screenshots/live_demo_screenshot.png)](https://youtu.be/yHkvyK9Pdlw)
+
+▶️ **Watch the full video walkthrough on YouTube**: [https://youtu.be/yHkvyK9Pdlw](https://youtu.be/yHkvyK9Pdlw)
+
+---
+
 ## 🛠️ Architecture
 
 ```
